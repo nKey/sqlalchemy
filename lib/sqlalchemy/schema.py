@@ -977,16 +977,16 @@ class Column(SchemaItem, expression.ColumnClause):
         if 'info' in kwargs:
             self.info = kwargs.pop('info')
 
-        if kwargs:
-            raise exc.ArgumentError(
-                "Unknown arguments passed to Column: " + repr(list(kwargs)))
+        #if kwargs:
+        #    raise exc.ArgumentError(
+        #        "Unknown arguments passed to Column: " + repr(list(kwargs)))
 
     def __str__(self):
         if self.name is None:
             return "(no name)"
         elif self.table is not None:
             if self.table.named_with_column:
-                return (self.table.description + "." + self.description)
+                return (str(self.table.description) + "." + str(self.description))
             else:
                 return self.description
         else:
